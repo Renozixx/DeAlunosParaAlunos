@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.darkmode-backgroundcolor {
+    background-color: #0F1C2E;
+}
+
+.darkmode-itemscolor {
+    background-color: #1F2B3E;
+}
+
+.button {
+    background-color: #3D5A80;
+}
