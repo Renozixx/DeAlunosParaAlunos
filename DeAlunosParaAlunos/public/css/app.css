@@ -1,0 +1,9 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: #0d0049;
+    font-family: "Poppins", serif;
+}
