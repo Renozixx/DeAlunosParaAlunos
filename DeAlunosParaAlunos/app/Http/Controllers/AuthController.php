@@ -10,27 +10,30 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function register(Request $request) {
-        $name = $request->input("name");
-        $email = $request->input("email");
-        // $password = Hash::make($request->input("password"));
-        $password = $request->input("password");
+
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
+        $cPassword = $request->c_password;
         
-        if(User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)])){
-            return redirect()->route('login');
-        } else {
-            return redirect()->route('register');
+        if($password !== $cPassword){
+            if(User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)])){
+                return redirect()->route('login');
+            } else {
+                return redirect()->route('register');
+            }
         }
     }
 
     public function login(Request $request) {
-        $email = $request->input("email");
-        $password = $request->input("password");
+        $email = $request->email;
+        $password = $request->password;
         // dd($email, $password, User::where('email', $email)->first());
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return redirect()->route('home');
         } else {
-            return view('auth.login', ['message' => 'Erro ao logar', "email" => $email, "pass" => $password]);
+            return view('auth.login', ['message' => 'Erro ao logar']);
         }
     }
 
