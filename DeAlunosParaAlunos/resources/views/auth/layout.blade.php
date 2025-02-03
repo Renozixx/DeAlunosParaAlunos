@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
+    @auth
+    @else
+    <x-forms.header-out/>
+    @endauth
     <main class="h-screen bg-zinc-900">
         @yield('content')
     </main>

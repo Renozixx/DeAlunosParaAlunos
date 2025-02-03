@@ -23,7 +23,7 @@ Route::get('/privace', function(){
 Route::get('/logout', [AuthController::class, "logout"])->name("logout");
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', [HomeController::class, ''])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::get('/user/{id}', 'HomeController@UserSearch')->name('user.search');
 });
