@@ -16,11 +16,11 @@ class AuthController extends Controller
         $password = $request->password;
         $cPassword = $request->c_password;
         
-        if($password !== $cPassword){
+        if($password === $cPassword){
             if(User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)])){
-                return redirect()->route('login');
+                return redirect()->route('home');
             } else {
-                return redirect()->route('register');
+                return redirect()->route('login');
             }
         }
     }
