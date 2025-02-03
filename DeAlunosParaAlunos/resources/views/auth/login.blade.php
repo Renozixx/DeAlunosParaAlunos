@@ -13,13 +13,17 @@
                         <label for="email">E-mail</label>
                         <input
                         class="py-2 px-5 rounded-md shadow-inner shadow-gray-600"
-                        type="text" name='email'>
+                        type="text" name='email'
+                        value={{ old('email') }}>
+                        <div class="text-red-700">{{ $errors->first('email') }}</div>
                     </div>
                     <div class="form-part mt-5 w-full flex flex-col gap-y-2">
                         <label for="email">Senha</label>
                         <input
                         class="py-2 px-5 rounded-md shadow-inner shadow-gray-600" 
-                        type="password" name='password'>
+                        type="password" name='password'
+                        value={{ old('password') }}>
+                        <div class="text-red-700">{{ $errors->first('password') }}</div>
                     </div>
                 </div>
                 <div class="lg:mt-20 my-3">

@@ -15,6 +15,18 @@ class AuthController extends Controller
         $email = $request->email;
         $password = $request->password;
         $cPassword = $request->c_password;
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'c_password' => 'required'
+        ],
+        [
+            'required' => 'O campo :attribute é obrigatório',
+            'email.email' => 'O campo email deve ser um email válido',
+        ]
+        );
         
         if($password === $cPassword){
             if(User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)])){
@@ -26,6 +38,17 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ],
+        [
+            'required' => 'O campo :attribute é obrigatório',
+            'email.email' => 'O campo email deve ser um email válido',
+        ]
+        );
+
         $email = $request->email;
         $password = $request->password;
         // dd($email, $password, User::where('email', $email)->first());
