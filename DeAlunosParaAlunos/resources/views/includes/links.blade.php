@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="{{ asset() }}">
+<link rel="stylesheet" href="{{ asset('') }}">

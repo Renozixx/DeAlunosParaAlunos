@@ -16,10 +16,14 @@ Route::get('/register', function() {
 
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
-Route::get('/logout', 'AuthController@logout')->name("logout");
+Route::get('/privace', function(){
+    return view('auth.politicaDePrivacidade');
+});
+
+Route::get('/logout', [AuthController::class, "logout"])->name("logout");
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', [HomeController::class, ''])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::get('/user/{id}', 'HomeController@UserSearch')->name('user.search');
 });

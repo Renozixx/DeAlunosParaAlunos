@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    overflow: hidden; /* Remove barras de rolagem */
+    background-color: black; /* Fundo preto para destacar as luzes */
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: #0d0049;
+    font-family: "Poppins", serif;
+}
+
+canvas {
+display: block;
+}
