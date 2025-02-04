@@ -3,7 +3,8 @@
 @section('content')
 <div class="form-section w-full h-full flex justify-center items-center">
     <div class="form-container lg:w-1/3 mx-5 rounded-lg py-2 px-5 shadow-sm shadow-slate-400 bg-zinc-600/75 text-white text-xl">
-        <form action="{{route('login')}}" class="h-full" method="POST">
+        <form action="{{route('register.post')}}" class="h-full" method="POST">
+            @csrf
             <div class="form-body">
                 <div class="w-full justify-center items-center flex">
                     <img class="w-1/2" src="{{ asset('img/DAPA.png') }}" alt="">
@@ -12,25 +13,32 @@
                     <label for="email">Nome</label>
                     <input
                     class="py-1 px-3 rounded-md shadow-inner shadow-gray-600"
-                    type="text" name='name'>
+                    type="text" name='name'
+                    value={{ old('name') }}>
+                    <div class="text-red-700">{{ $errors->first('name') }}</div>
                 </div>
                 <div class="form-part w-full mt-3 flex flex-col gap-y-2">
                     <label for="email">E-mail</label>
                     <input
                     class="py-1 px-3 rounded-md shadow-inner shadow-gray-600"
-                    type="text" name='email'>
+                    type="text" name='email'
+                    value={{ old('email') }}>
+                    <div class="text-red-700">{{ $errors->first('email') }}</div>
                 </div>
                 <div class="form-part mt-3 w-full flex flex-col gap-y-2">
                     <label for="email">Senha</label>
                     <input
                     class="py-1 px-3 rounded-md shadow-inner shadow-gray-600" 
-                    type="password" name='password'>
+                    type="password" name='password'
+                    value={{ old('password') }}>
+                    <div class="text-red-700">{{ $errors->first('password') }}</div>
                 </div>
                 <div class="form-part mt-3 w-full flex flex-col gap-y-2">
                     <label for="email">Confirme sua Senha</label>
                     <input
                     class="py-1 px-3 rounded-md shadow-inner shadow-gray-600" 
                     type="password" name='c_password'>
+                    <div class="text-red-700">{{ $errors->first('c_password') }}</div>
                 </div>
             </div>
             <input type="checkbox" name="termos"><label class="text-sm">Ao confirmar essa checkbox, eu aceito os
