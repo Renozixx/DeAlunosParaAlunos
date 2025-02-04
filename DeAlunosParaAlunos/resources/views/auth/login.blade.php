@@ -26,6 +26,9 @@
                         <div class="text-red-700">{{ $errors->first('password') }}</div>
                     </div>
                 </div>
+                @isset($message)
+                <div class="text-red-700">{{ $message }}</div>
+                @endisset
                 <div class="lg:mt-20 my-3">
                     <div class="form-bottom w-full flex justify-between items-center my-5">
                         <div>

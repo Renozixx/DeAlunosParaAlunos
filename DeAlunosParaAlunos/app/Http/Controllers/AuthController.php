@@ -17,14 +17,15 @@ class AuthController extends Controller
         $cPassword = $request->c_password;
 
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
+            'name' => 'required|unique:users,name',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'c_password' => 'required'
         ],
         [
             'required' => 'O campo :attribute é obrigatório',
-            'email.email' => 'O campo email deve ser um email válido',
+            'email.email' => 'email deve ser um email válido',
+            'unique' => ':attribute já está em uso'
         ]
         );
         
