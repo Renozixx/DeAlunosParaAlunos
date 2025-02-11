@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use Inertia\Inertia;
 
 Route::get('/login', function() {
     return view("auth.login");
@@ -23,7 +24,10 @@ Route::get('/privace', function(){
 Route::get('/logout', [AuthController::class, "logout"])->name("logout");
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    // Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', function () {
+        return Inertia::render('Home');
+    })->name('home');
 
     Route::get('/user/{id}', 'HomeController@UserSearch')->name('user.search');
 });
