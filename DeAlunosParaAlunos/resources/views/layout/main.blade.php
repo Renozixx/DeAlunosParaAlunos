@@ -8,10 +8,11 @@
     <script src='https://cdn.tailwindcss.com'></script>
 </head>
 <body>
-    <x-forms.header-in/>
+    <x-header.header-in/>
     </header>
-    <main>
+    <main class="min-h-screen">
         @yield('content')
     </main>
+    <x-footer/>
 </body>
 </html>

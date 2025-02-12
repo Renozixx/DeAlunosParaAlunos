@@ -17,7 +17,7 @@
 <body>
     @auth
     @else
-    <x-forms.header-out/>
+    <x-header.header-out/>
     @endauth
     <main class="h-screen bg-zinc-900">
         @yield('content')
