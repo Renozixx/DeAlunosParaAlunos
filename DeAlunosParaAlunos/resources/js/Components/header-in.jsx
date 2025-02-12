@@ -6,6 +6,7 @@ export default function HeaderIn() {
                     <h1 className="text-2xl font-bold">Meu Aplicativo</h1>
                     <nav>
                         <ul className="flex space-x-4">
+                            <li><a href="/profile" className="hover:text-blue-400">Perfil</a></li>
                             <li><a href="/" className="hover:text-blue-400">Home</a></li>
                             <li><a href="/logout" className="hover:text-blue-400">Sair</a></li>
                             <li><a href="#" className="hover:text-blue-400">Política de Privacidade</a></li>

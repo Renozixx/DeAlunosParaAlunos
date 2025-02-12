@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
 Route::get('/login', function() {
@@ -21,7 +24,7 @@ Route::get('/privace', function(){
     return view('auth.politicaDePrivacidade');
 });
 
-Route::get('/logout', [AuthController::class, "logout"])->name("logout");
+Route::post('/logout', [AuthController::class, "logout"])->name("logout");
 
 Route::group(['middleware' => 'auth'], function() {
     // Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -29,6 +32,10 @@ Route::group(['middleware' => 'auth'], function() {
         return Inertia::render('Home');
     })->name('home');
 
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
     Route::get('/user/{id}', 'HomeController@UserSearch')->name('user.search');
 });
 

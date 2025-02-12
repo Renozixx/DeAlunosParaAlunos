@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -31,9 +33,9 @@ class AuthController extends Controller
         
         if($password === $cPassword){
             if(User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)])){
-                return redirect()->route('home');
+                return Inertia::location('/');
             } else {
-                return redirect()->route('login');
+                return Inertia::location('/login');
             }
         }
     }
@@ -55,14 +57,14 @@ class AuthController extends Controller
         // dd($email, $password, User::where('email', $email)->first());
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return redirect()->route('home');
+            return Inertia::location('/');
         } else {
-            return view('auth.login', ['message' => 'Erro ao logar']);
+            return Inertia::location('/login');
         }
     }
 
     public function logOut() {
         Auth::logout();
-        return redirect()->route("login");
+        return Inertia::location('/');
     }
 }
