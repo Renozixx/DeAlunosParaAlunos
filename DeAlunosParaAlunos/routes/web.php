@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HandleEvents;
 use App\Http\Controllers\HomeController;
 
 Route::get('/login', function() {
@@ -27,3 +28,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/user/{id}', 'HomeController@UserSearch')->name('user.search');
 });
+
+Route::get("/testando-react", [HandleEvents::class, 'teste']);
