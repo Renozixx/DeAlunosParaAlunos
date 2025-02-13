@@ -2,7 +2,7 @@ import HeaderOut from "@/Components/header-out";
 import HeaderIn from "@/Components/header-in";
 import Footer from "@/Components/footer";
 
-export default function Home () {
+export default function Home ({error}) {
     return (
         <div class="">
             <HeaderIn />

@@ -34,12 +34,13 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile', [ProfileController::class, 'passwordUpdate'])->name('password.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::get('/user/{id}', 'HomeController@UserSearch')->name('user.search');
 });
 
-/**
+/**     
  * Rotass para componentes React
  */
 
